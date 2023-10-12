@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    width: 100vw;
+    background-color: #212121;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ------------------header----------------------------- */
+
+
+header.header {
+    background-color: rgba(29, 29, 29, 0.687);
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0px 1px 5px grey;
+    position: sticky;
+    top: 0;
+}
+
+.header .navaction {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0rem;
+}
+
+.navaction .log h2 {
+    font-size: 4rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 5px rgb(148, 88, 88);
+    letter-spacing: 1px;
+}
+
+.navaction .navactionlist {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.navaction .navactionlist li {
+    list-style: none;
+    text-decoration: none;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    position: relative;
+    opacity: 0.5;
+}
+
+.navaction .navactionlist li::after {
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 0%;
+    height: 4px;
+    display: block;
+    border-radius: 0px 5px 5px 0;
+    transition: all 700ms ease-in-out;
+}
+
+.navaction .navactionlist li:hover {
+    opacity: 1;
+}
+
+.navaction .navactionlist li:hover::after {
+    width: 100%;
+}
+
+.navaction .navactionlist li a {
+    text-decoration: none;
+    color: white;
+}
+
+.navaction .searchbox {
+    font-size: 3rem;
+}
+
+.searchbox input {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+
+}
+
+.searchbox input:focus {
+    box-shadow: 2px 2px 5px rgb(255, 255, 255);
+}
+
+.searchbox .btn {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgb(168, 168, 168);
+}
+
+.searchbox .btn:active {
+    scale: 0.98;
+}
+
+/* ----------------------displaysection---------------------------- */
+
+.displaysection {
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 10px;
+    width: 90%;
+    height: 70vh;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.displaysection::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(255, 244, 244) 0%, rgba(255, 0, 0, 0) 26%, rgba(189, 189, 189, 0.9473039215686274) 78%);
+}
+
+.displaysection .images {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    /* transform: translateX(-0%); */
+    /* background-color: red; */
+    /* transition: all 700ms ease-in-out; */
+    animation: sliding ease 200s infinite normal both;
+}
+
+@keyframes sliding {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(-1183%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.displaysection .images img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+
+}
+
+/* ---------------------------------------------------------- */
+
+.displaysection .textbox {
+    position: absolute;
+    bottom: -105px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 17rem;
+    gap: 6rem;
+}
+
+.textbox h1 {
+    font-size: 5rem;
+    color: rgb(255, 0, 0);
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px 5px rgb(0 0 0);
+    text-transform: uppercase;
+    word-spacing: 17px;
+    letter-spacing: 3px;
+}
+
+.textbox p {
+    font-size: 2rem;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+
+
+
+/* --------------------personPopularSection------------------------------- */
+section {
+    width: 100%;
+    /* background-color: yellow; */
+    margin: 5rem 0;
+}
+
+section .lable {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    margin-left: 8rem;
+    letter-spacing: 1px;
+    word-spacing: 1rem;
+}
+
+.personPopularSection {
+    /* padding: 1rem; */
+    overflow: hidden;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.personPopularSection .card {
+    width: 20%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.personPopularSection .card .image {
+    width: 100%;
+}
+
+.personPopularSection .card .image img {
+    width: 100%;
+}
+
+.card .details {
+    width: 100%;
+    position: absolute;
+    bottom: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 0 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.857);
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.personPopularSection .card:hover .details {
+    transform: translateY(0%);
+}
+
+.card .details .title {
+    font-size: 3rem;
+}
+
+.card .details .info p {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.card .details .info span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

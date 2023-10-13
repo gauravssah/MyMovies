@@ -129,6 +129,8 @@ header.header {
     position: relative;
     overflow: hidden;
     box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    min-width: 745px;
+
 }
 
 .displaysection::after {
@@ -212,6 +214,7 @@ header.header {
 .catogery {
     width: 90%;
     margin: auto;
+    min-width: 745px;
 }
 
 .catogeryname {
@@ -221,7 +224,8 @@ header.header {
     align-items: center;
     /* justify-content: center; */
     overflow-x: scroll;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+
 }
 
 .catogeryname h3 {
@@ -253,9 +257,10 @@ section .lable {
     font-size: 3rem;
     text-transform: uppercase;
     margin-bottom: 2rem;
-    margin-left: 8rem;
+    /* margin-left: 8rem; */
     letter-spacing: 1px;
     word-spacing: 1rem;
+    text-align: center;
 }
 
 .personPopularSection {
@@ -268,7 +273,7 @@ section .lable {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
+    min-width: 745px;
 }
 
 .personPopularSection .card {

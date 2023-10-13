@@ -1,5 +1,4 @@
 const homedisplayimages = document.querySelector(".displaysection");
-const navactionlist = document.querySelectorAll(".navactionlist li");
 const tital = document.title;
 const personPopularSection = document.querySelector(".personPopularSection");
 const catogeryname = document.querySelector(".catogeryname");
@@ -9,23 +8,23 @@ const submitbtn = document.querySelector(".submitbtn");
 const searchitembox = document.querySelector(".searchitembox");
 const searchboxinput = document.querySelector(".searchbox input");
 
-closebtn.addEventListener("click", () => {
-    searchitembox.remove()
+
+closebtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    if (!null) {
+        searchitembox.remove();
+    }
+
 })
 
+console.log("scri")
 
 
 
+const navactionlist = document.querySelectorAll(".navactionlist li");
 if (tital == "My Movies - Your go-to destination for a vast collection of movies and series.") {
     // console.log("Home");
     navactionlist[0].style.opacity = "1";
-} else if (tital == "Movies - Your go-to destination for a vast collection of movies and series.") {
-    // console.log("movies");
-    navactionlist[1].style.opacity = "1";
-}
-else {
-    navactionlist[2].style.opacity = "1";
-    // console.log("tv");
 }
 
 
@@ -108,10 +107,6 @@ async function homeDisplayImage() {
             personPopularSection.append(popularcards);
 
         }
-
-        // console.log(data.page);
-        // console.log(data.total_pages);
-        // console.log(pageNumber)
 
 
     } catch (error) {

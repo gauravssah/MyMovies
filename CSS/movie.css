@@ -12,8 +12,6 @@
     min-width: 745px;
 }
 
-
-
 .moviesTopSliderDisplay .slider {
     width: 100%;
     height: 100%;
@@ -47,18 +45,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 50%;
+    top: 45%;
     gap: 5.5rem;
     padding: 0 5rem;
     z-index: 2;
 }
 
 .SliderDisplaydetailsbox h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .SliderDisplaydetailsbox p {
     font-size: 3rem;
+    text-align: center;
 }
 
 .slideingbuttons {

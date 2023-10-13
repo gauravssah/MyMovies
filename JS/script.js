@@ -3,8 +3,15 @@ const navactionlist = document.querySelectorAll(".navactionlist li");
 const tital = document.title;
 const personPopularSection = document.querySelector(".personPopularSection");
 const catogeryname = document.querySelector(".catogeryname");
+const searchitems = document.querySelector(".searchitems");
+const closebtn = document.querySelector(".closebtn");
+const submitbtn = document.querySelector(".submitbtn");
+const searchitembox = document.querySelector(".searchitembox");
+const searchboxinput = document.querySelector(".searchbox input");
 
-
+closebtn.addEventListener("click", () => {
+    searchitembox.remove()
+})
 
 
 
@@ -145,6 +152,8 @@ async function catogerysection() {
 
 }
 
+// ---------------------------------------------
+
 async function updateThePopularByCatogery(catogeryName) {
 
     try {
@@ -178,21 +187,80 @@ async function updateThePopularByCatogery(catogeryName) {
                         <p class="overview">${overview.slice(0, 131)}...</p>
                     </div>
                     </div>`;
+
             personPopularSection.append(popularcards)
 
             personPopularSection.insertBefore(popularcards, personPopularSection.children[0]);
 
         }
 
-        // console.log(catogName.total_results)
-        // console.log(catogName.results[0])
-        // console.log(catogName.results[0].original_name);
-        // console.log(catogName.results[0].poster_path);
-        // console.log(catogName.results[0].overview);
-
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
+
+
+}
+
+
+// -----------------------------------------------------
+
+
+submitbtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // console.log(searchboxinput.value);
+    searchitemsfunction(searchboxinput.value);
+});
+
+
+async function searchitemsfunction(searchvalue) {
+
+    let pageNumber = 1;
+
+    const responce = await fetch(`https://api.themoviedb.org/3/search/collection?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${searchvalue}&page=${pageNumber}`);
+    const searchMovie = await responce.json();
+
+    // console.log(searchMovie);
+    // console.log(searchMovie.page)
+    // console.log(searchMovie.total_results)
+    // console.log(searchMovie.results.length)
+    // console.log(searchMovie.total_results + "total_results")
+
+    if (searchMovie.total_results < 1) {
+        searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";
+        searchitems.style.fontSize = "3rem";
+    } else {
+
+        searchitems.textContent = "";
+
+        for (let index = 0; index < searchMovie.results.length; index++) {
+
+            const imagepath = searchMovie.results[index].poster_path;
+            const titleis = searchMovie.results[index].name;
+            const overview = searchMovie.results[index].overview;
+
+            const searchcards = document.createElement("div")
+            searchcards.classList.add("card");
+            searchcards.innerHTML =
+                `<div class="image">
+                    <img src="${imagepath == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + imagepath}" alt="poster-image">
+    
+                        </div>
+    
+                        <div class="details">
+                        <h2 class="title">${titleis}</h2>
+                        <div class="info">
+                            <p class="overview">${overview.slice(0, 131)}...</p>
+                        </div>
+                        </div>`;
+
+            searchitems.append(searchcards);
+        }
+
+
+    }
+
+    searchitembox.style.display = "block";
+    searchboxinput.value = "";
 
 
 }

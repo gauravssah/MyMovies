@@ -112,6 +112,8 @@ async function homeDisplayImage() {
 async function catogerysection() {
 
     try {
+        let h3Array = [];
+
         const responce = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=20f9ed2296f2b4b0100817e7a4262e8f");
 
         const catgegoryname = await responce.json()
@@ -122,17 +124,28 @@ async function catogerysection() {
             catogeryname.append(h3);
 
             h3.addEventListener("click", (e) => {
+                removeAllh3Bg();
+                h3.style.backgroundColor = "red"
                 const catogeryName = e.target.innerText;
-
+                e.target.style.backgroundColor = "#b4b4b4";
                 updateThePopularByCatogery(catogeryName)
 
-            })
+            });
+
+            h3Array.push(h3);
         }
+
+        function removeAllh3Bg() {
+            h3Array.forEach((h3item) => {
+                h3item.style.backgroundColor = "#585858";
+            });
+        }
+
+
+
     } catch (error) {
         console.log(error)
     }
-
-
 
 }
 
@@ -181,7 +194,6 @@ async function updateThePopularByCatogery(catogeryName) {
     } catch (error) {
         console.log(error);
     }
-
 
 }
 

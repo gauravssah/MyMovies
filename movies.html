@@ -12,7 +12,7 @@
 
 <body>
 
-
+    <!-- header Section -->
     <header class="header">
         <nav class="navaction">
 
@@ -27,17 +27,17 @@
             </ul>
 
             <div class="searchbox">
-                <input type="search" name="" id="" placeholder="Search here ...">
-                <button type="submit" class="btn">Search</button>
+                <form>
+                    <input type="search" name="" id="" placeholder="Search here ...">
+                    <button type="submit" class="btn submitbtn">Search</button>
+                </form>
             </div>
 
         </nav>
     </header>
 
-
+    <!-- moviesTopSliderDisplay Section -->
     <div class="moviesTopSliderDisplay">
-
-
         <div class="slideingbuttons">
             <button class="next"></button>
             <button class="prev"></button>
@@ -45,7 +45,49 @@
 
     </div>
 
+    <!-- searchitembox Section -->
+    <div class="searchitembox">
+        <h2 class="lable">Search Results</h2>
+        <div class="closebtn">X</div>
+        <div class="searchitems"></div>
+    </div>
 
+    <!-- nowPlaying Section -->
+    <section>
+        <h1 class="lable">Now Playing</h1>
+        <div class="nowPlaying">
+            <div class="playingItems"></div>
+        </div>
+    </section>
+
+    <!-- Toprated Section -->
+    <section>
+        <h1 class="lable">Toprated MOVIES</h1>
+        <div class="populaesection">
+            <div class="popularItems"></div>
+        </div>
+    </section>
+
+
+    <!-- Upcoming Section -->
+    <section>
+        <h1 class="lable">Upcoming</h1>
+        <div class="Upcomingsection">
+            <div class="Upcoming"></div>
+        </div>
+    </section>
+
+    <!-- Discover Section -->
+    <section>
+        <h1 class="lable">Discover MOVIES</h1>
+        <div class="Discoversection">
+            <div class="DiscoverItems"></div>
+        </div>
+
+        <button class="clickformore">
+            More
+        </button>
+    </section>
 
 
 </body>

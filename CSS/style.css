@@ -336,8 +336,9 @@ section {
     margin: auto;
     min-width: 745px;
     position: absolute;
-    top: 2%;
-    background-color: #212121db;
+    /* top: 2%; */
+    top: 3%;
+    background-color: #212121fa;
     padding: 7rem 7rem;
     z-index: 2;
     border-bottom: 5px solid white;

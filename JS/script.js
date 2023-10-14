@@ -9,17 +9,12 @@ const searchitembox = document.querySelector(".searchitembox");
 const searchboxinput = document.querySelector(".searchbox input");
 
 
-closebtn.addEventListener("click", (event) => {
-    event.preventDefault()
+closebtn.addEventListener("click", () => {
     if (!null) {
         searchitembox.remove();
     }
 
 })
-
-console.log("scri")
-
-
 
 const navactionlist = document.querySelectorAll(".navactionlist li");
 if (tital == "My Movies - Your go-to destination for a vast collection of movies and series.") {
@@ -34,15 +29,11 @@ homeDisplayImage();
 
 async function homeDisplayImage() {
 
-
     try {
         let index = 0;
-        let pageNumber = 1;
-
+        let pageNumber = Math.floor(Math.random() * 400);
         const responce = await fetch(`https://api.themoviedb.org/3/person/popular?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${pageNumber}`);
-        const data = await responce.json()
-        // console.log(data.results);
-        // console.log(data.results[0].known_for[0].backdrop_path);
+        const data = await responce.json();
 
         const div = document.createElement("div");
         div.classList.add("images");
@@ -112,8 +103,6 @@ async function homeDisplayImage() {
     } catch (error) {
         console.log(error)
     }
-
-
 
 }
 
@@ -197,12 +186,11 @@ async function updateThePopularByCatogery(catogeryName) {
 }
 
 
-// -----------------------------------------------------
+// ---------------Search----submitbtn----------------------------------
 
 
 submitbtn.addEventListener("click", (e) => {
     e.preventDefault();
-    // console.log(searchboxinput.value);
     searchitemsfunction(searchboxinput.value);
 });
 
@@ -213,12 +201,6 @@ async function searchitemsfunction(searchvalue) {
 
     const responce = await fetch(`https://api.themoviedb.org/3/search/collection?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${searchvalue}&page=${pageNumber}`);
     const searchMovie = await responce.json();
-
-    // console.log(searchMovie);
-    // console.log(searchMovie.page)
-    // console.log(searchMovie.total_results)
-    // console.log(searchMovie.results.length)
-    // console.log(searchMovie.total_results + "total_results")
 
     if (searchMovie.total_results < 1) {
         searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";

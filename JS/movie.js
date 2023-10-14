@@ -25,7 +25,7 @@ updatethemoviesDisplay()
 async function updatethemoviesDisplay() {
 
 
-    let RandompageNo = Math.floor(Math.random() * 200);
+    let RandompageNo = Math.floor(Math.random() * 200 + 1);
 
     const responce = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
     const data = await responce.json();
@@ -175,7 +175,9 @@ nowplaying()
 async function nowplaying() {
 
     try {
-        const responce = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=2");
+        let RandompageNo = Math.floor(Math.random() * 70 + 1);
+
+        const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
         const data = await responce.json();
 
         for (let index = 0; index < data.results.length; index++) {
@@ -186,7 +188,8 @@ async function nowplaying() {
             const item = document.createElement("div");
             item.classList.add("items");
             item.innerHTML =
-                ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
+                ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="image">
+
             <h2 class="tital">${titlepath}</h2>`;
             playingItems.append(item);
         }
@@ -200,9 +203,11 @@ async function nowplaying() {
 // ----------------------Toprated--------------------------------
 const popularItems = document.querySelector(".popularItems");
 
-topratesmovies()
+topratesmovies();
+
 async function topratesmovies() {
-    const responce = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=20f9ed2296f2b4b0100817e7a4262e8f");
+    let RandompageNo = Math.floor(Math.random() * 50 + 1);
+    const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
 
     const data = await responce.json();
 
@@ -223,7 +228,7 @@ async function topratesmovies() {
         items.classList.add("items");
 
         items.innerHTML =
-            ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
+            ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
 
         <div class="moviedetails">
             <h1 class="movietital">${movietital}</h1>
@@ -247,7 +252,8 @@ Upcomingfunction()
 async function Upcomingfunction() {
 
     try {
-        const responce = await fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=2");
+        let RandompageNo = Math.floor(Math.random() * 20 + 1);
+        const responce = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
         const data = await responce.json();
 
         for (let index = 0; index < data.results.length; index++) {
@@ -258,7 +264,7 @@ async function Upcomingfunction() {
             const item = document.createElement("div");
             item.classList.add("items");
             item.innerHTML =
-                ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
+                ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
             <h2 class="tital">${titlepath}</h2>`;
             Upcoming.append(item);
         }

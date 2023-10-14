@@ -13,10 +13,9 @@ let sliders = [];
 
 // ------------------moviesTopSliderDisplay-----------------------------------
 const navactionlist = document.querySelectorAll(".navactionlist li");
-if (document.title == "Movies - Your go-to destination for a vast collection of movies and series.") {
-    navactionlist[1].style.opacity = "1";
+if (document.title == "TV SERIES - Your go-to destination for a vast collection of movies and series.") {
+    navactionlist[2].style.opacity = "1";
 }
-
 
 
 // ------------------moviesTopSliderDisplay-----------------------------------
@@ -24,31 +23,36 @@ updatethemoviesDisplay()
 
 async function updatethemoviesDisplay() {
 
+    try {
 
-    let RandompageNo = Math.floor(Math.random() * 200 + 1);
+        let RandompageNo = Math.floor(Math.random() * 200 + 1);
 
-    const responce = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
-    const data = await responce.json();
+        const responce = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
+        const data = await responce.json();
 
+        for (let index = 0; index < data.results.length; index++) {
 
-
-    for (let index = 0; index < data.results.length; index++) {
-
-        const slider = document.createElement("div")
-        slider.classList.add("slider");
-        slider.innerHTML =
-            `<img src="${data.results[index].backdrop_path == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + data.results[index].backdrop_path}" alt="image">
+            const slider = document.createElement("div")
+            slider.classList.add("slider");
+            slider.innerHTML =
+                `<img src="${data.results[index].backdrop_path == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + data.results[index].backdrop_path}" alt="image">
 
         <div class="SliderDisplaydetailsbox">
             <h1>${data.results[index].title == undefined ? "" : data.results[index].title}</h1>
-            <p>${data.results[index].overview.slice(0, 230)}</p>
+            <p>${data.results[index].overview.slice(0, 230)}.</p>
         </div>`;
 
-        moviesTopSliderDisplay.insertBefore(slider, moviesTopSliderDisplay.children[0]);
-        sliders.push(slider);
-    }
+            moviesTopSliderDisplay.insertBefore(slider, moviesTopSliderDisplay.children[0]);
+            sliders.push(slider);
+        }
 
-    slidDisplywithimage(sliders);
+        slidDisplywithimage(sliders);
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
 
 }
 
@@ -120,32 +124,32 @@ closebtn.addEventListener("click", () => {
 });
 
 async function showTheSearchItems(movieName) {
-    const responce = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${movieName}`)
-    const searchMovie = await responce.json();
 
-    // console.log(searchMovie)
+    try {
 
-    if (searchMovie.total_results < 1) {
-        searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";
-        searchitems.style.fontSize = "3rem";
-    } else {
+        const responce = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${movieName}`)
+        const searchMovie = await responce.json();
 
-        searchitems.textContent = "";
+        if (searchMovie.total_results < 1) {
+            searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";
+            searchitems.style.fontSize = "3rem";
+        } else {
 
-        for (let index = 0; index < searchMovie.results.length; index++) {
+            searchitems.textContent = "";
 
-            const imagepath = searchMovie.results[index].poster_path;
-            const titleis = searchMovie.results[index].name;
-            const overview = searchMovie.results[index].overview;
+            for (let index = 0; index < searchMovie.results.length; index++) {
 
-            const searchcards = document.createElement("div")
-            searchcards.classList.add("card");
-            searchcards.innerHTML =
-                `<div class="image">
+                const imagepath = searchMovie.results[index].poster_path;
+                const titleis = searchMovie.results[index].name;
+                const overview = searchMovie.results[index].overview;
+
+                const searchcards = document.createElement("div")
+                searchcards.classList.add("card");
+                searchcards.innerHTML =
+                    `<div class="image">
                     <img src="${imagepath == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + imagepath}" alt="poster-image">
     
                         </div>
-    
                         <div class="details">
                         <h2 class="title">${titleis == undefined ? "" : titleis}</h2>
                         <div class="info">
@@ -153,21 +157,25 @@ async function showTheSearchItems(movieName) {
                         </div>
                         </div>`;
 
-            searchitems.append(searchcards);
+                searchitems.append(searchcards);
+            }
+
+
         }
 
+        searchitembox.style.display = "block";
+        searchboxInput.value = "";
 
+
+    } catch (error) {
+        console.log(error)
     }
 
-    searchitembox.style.display = "block";
-    searchboxInput.value = "";
 
-    // searchitembox.style.display = "block";
-    // searchitems.innerHTML = value;
 }
 
 
-// ----------------------nowplaying--------------------------------
+// ----------------------AIRING TODAY--------------------------------
 const playingItems = document.querySelector(".playingItems");
 
 nowplaying()
@@ -175,9 +183,9 @@ nowplaying()
 async function nowplaying() {
 
     try {
-        let RandompageNo = Math.floor(Math.random() * 70 + 1);
+        let RandompageNo = Math.floor(Math.random() * 7 + 1);
 
-        const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
+        const responce = await fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
         const data = await responce.json();
 
         for (let index = 0; index < data.results.length; index++) {
@@ -190,7 +198,7 @@ async function nowplaying() {
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="image">
 
-            <h2 class="tital">${titlepath}</h2>`;
+            <h2 class="tital">${titlepath == undefined ? "" : titlepath}</h2>`;
             playingItems.append(item);
         }
     } catch (error) {
@@ -200,51 +208,53 @@ async function nowplaying() {
 }
 
 
-// ----------------------Toprated--------------------------------
+// ----------------------TOP-RATED--------------------------------
 const popularItems = document.querySelector(".popularItems");
 
 topratesmovies();
 
 async function topratesmovies() {
-    let RandompageNo = Math.floor(Math.random() * 50 + 1);
-    const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
 
-    const data = await responce.json();
+    try {
 
-    // console.log(data.results.length)
-    // console.log(data.results[0].poster_path)
-    // console.log(data.results[0].title)
-    // console.log(data.results[0].vote_average)
-    // console.log(data.results[0].vote_count)
+        let RandompageNo = Math.floor(Math.random() * 50 + 1);
+        const responce = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
 
-    for (let index = 0; index < data.results.length; index++) {
-        const imagepath = data.results[index].poster_path;
-        const movietital = data.results[index].title;
-        const description = data.results[index].overview;
-        const rating = data.results[index].vote_average;
-        const totalvotes = data.results[index].vote_count;
+        const data = await responce.json();
 
-        const items = document.createElement("div");
-        items.classList.add("items");
 
-        items.innerHTML =
-            ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
+        for (let index = 0; index < data.results.length; index++) {
+            const imagepath = data.results[index].poster_path;
+            const movietital = data.results[index].title;
+            const description = data.results[index].overview;
+            const rating = data.results[index].vote_average;
+            const totalvotes = data.results[index].vote_count;
 
-        <div class="moviedetails">
-            <h1 class="movietital">${movietital}</h1>
-            <p class="overvies">${description.slice(0, 100)}..</p>
+            const items = document.createElement("div");
+            items.classList.add("items");
 
-            <p class="rating">Rating: <span>${rating} %</span></p>
-            <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
-        </div>`;
+            items.innerHTML =
+                ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
+    
+            <div class="moviedetails">
+                <h1 class="movietital">${movietital == undefined ? "" : movietital}</h1>
+                <p class="overvies">${description.slice(0, 100)}..</p>
+    
+                <p class="rating">Rating: <span>${rating} %</span></p>
+                <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
+            </div>`;
 
-        popularItems.append(items);
+            popularItems.append(items);
+        }
+
+    } catch (error) {
+        console.log(error)
     }
 
 }
 
 
-// ----------------------Upcoming--------------------------------
+// ----------------------ON-THE-AIR--------------------------------
 const Upcoming = document.querySelector(".Upcoming");
 
 Upcomingfunction()
@@ -252,8 +262,8 @@ Upcomingfunction()
 async function Upcomingfunction() {
 
     try {
-        let RandompageNo = Math.floor(Math.random() * 20 + 1);
-        const responce = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
+        let RandompageNo = Math.floor(Math.random() * 30 + 1);
+        const responce = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
         const data = await responce.json();
 
         for (let index = 0; index < data.results.length; index++) {
@@ -265,7 +275,7 @@ async function Upcomingfunction() {
             item.classList.add("items");
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
-            <h2 class="tital">${titlepath}</h2>`;
+            <h2 class="tital">${titlepath == undefined ? "" : titlepath}</h2>`;
             Upcoming.append(item);
         }
     } catch (error) {
@@ -284,10 +294,10 @@ Discovermovies(pageNo);
 async function Discovermovies(pageNo) {
 
     try {
-        const responce = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${pageNo}`);
+        const responce = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${pageNo}`);
         const data = await responce.json();
 
-        if (pageNo < data.total_pages) {
+        if (pageNo < data.results.length) {
             for (let index = 0; index < data.results.length; index++) {
                 const imagepath = data.results[index].poster_path;
                 const movietital = data.results[index].title;
@@ -302,7 +312,7 @@ async function Discovermovies(pageNo) {
                     ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
     
             <div class="moviedetails">
-                <h1 class="movietital">${movietital}</h1>
+                <h1 class="movietital">${movietital == undefined ? "" : movietital}</h1>
                 <p class="overvies">${description.slice(0, 100)}..</p>
     
                 <p class="rating">Rating: <span>${rating} %</span></p>

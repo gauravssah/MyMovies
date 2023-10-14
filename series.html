@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/style.css">
-    <script src="./JS/script.js" defer></script>
+    <link rel="stylesheet" href="./CSS/movie.css">
+    <script src="./JS/series.js" defer></script>
+    <!-- <script src="./JS/script.js" defer></script> -->
     <title>TV SERIES - Your go-to destination for a vast collection of movies and series. </title>
 </head>
 
 <body>
 
-
+    <!-- header Section -->
     <header class="header">
         <nav class="navaction">
 
@@ -26,17 +28,66 @@
             </ul>
 
             <div class="searchbox">
-                <input type="search" name="" id="" placeholder="Search here ...">
-                <button type="submit" class="btn">Search</button>
+                <form>
+                    <input type="search" name="" id="" placeholder="Search here ...">
+                    <button type="submit" class="btn submitbtn">Search</button>
+                </form>
             </div>
 
         </nav>
     </header>
 
+    <!-- moviesTopSliderDisplay Section -->
+    <div class="moviesTopSliderDisplay">
+        <div class="slideingbuttons">
+            <button class="next"></button>
+            <button class="prev"></button>
+        </div>
 
+    </div>
 
+    <!-- searchitembox Section -->
+    <div class="searchitembox">
+        <h2 class="lable">Search Results</h2>
+        <div class="closebtn">X</div>
+        <div class="searchitems"></div>
+    </div>
 
+    <!-- AIRING TODAY -->
+    <section>
+        <h1 class="lable">airing today</h1>
+        <div class="nowPlaying">
+            <div class="playingItems"></div>
+        </div>
+    </section>
 
+    <!-- TOP-RATED Section -->
+    <section>
+        <h1 class="lable">Top-rated SERIES</h1>
+        <div class="populaesection">
+            <div class="popularItems"></div>
+        </div>
+    </section>
+
+    <!-- ON-THE-AIR Section -->
+    <section>
+        <h1 class="lable">on-the-air</h1>
+        <div class="Upcomingsection">
+            <div class="Upcoming"></div>
+        </div>
+    </section>
+
+    <!-- Discover TV SERIES Section -->
+    <section>
+        <h1 class="lable">Discover TV SERIES</h1>
+        <div class="Discoversection">
+            <div class="DiscoverItems"></div>
+        </div>
+
+        <button class="clickformore">
+            More
+        </button>
+    </section>
 
 
 </body>

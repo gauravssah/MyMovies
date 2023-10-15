@@ -331,14 +331,46 @@ section {
     font-weight: bold;
 }
 
+.button {
+    /* background: rebeccapurple; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .WatchNow {
-    background-color: #635e5e;
-    padding: 0.5rem 2rem;
+    background-color: #ffffff;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     border: none;
     /* box-shadow: 1px 0px 5px rgb(255, 255, 255); */
-    margin: 2rem 0rem 0rem 0rem;
+    margin: 2rem 0rem 0rem 1rem;
     border-radius: 16px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    white-space: none;
+}
+
+.WatchList {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    /* box-shadow: 1px 0px 5px rgb(255, 255, 255); */
+    margin: 2rem 0rem 0rem 1rem;
+    border-radius: 16px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    white-space: none;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.WatchList:hover {
+    background-color: #000000;
+    transition: all 0.3s ease;
 }
 
 .WatchNow:hover {
@@ -348,13 +380,6 @@ section {
 
 .titaltext {
     font-size: 2rem;
-}
-
-.WatchNow a {
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
 }
 
 

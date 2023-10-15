@@ -26,6 +26,7 @@ if (tital == "My Movies - Your go-to destination for a vast collection of movies
 catogerysection();
 homeDisplayImage();
 
+// ----------------homeDisplayImage-------------------------
 
 async function homeDisplayImage() {
 
@@ -72,18 +73,22 @@ async function homeDisplayImage() {
         }
 
 
-        console.log(data.results[index].known_for[0].id)
-        console.log(data.results[index].known_for[0].original_title)
 
+        console.log(data.results)
 
         // ----------------personPopularSection---------------------
 
         for (let index = 0; index < data.results.length; index++) {
 
-            const imagepath = data.results[index].known_for[0].poster_path;
-            const rating = data.results[index].known_for[0].vote_average;
-            const votes = data.results[index].known_for[0].vote_count;
-            const titleis = data.results[index].known_for[0].original_title;
+            const imagepath = data.results[index].known_for[1].poster_path;
+            const rating = data.results[index].known_for[1].vote_average;
+            const votes = data.results[index].known_for[1].vote_count;
+            const titleis = data.results[index].known_for[1].original_title;
+            const titleisName = data.results[index].known_for[1].name;
+            const movieId = data.results[index].known_for[1].id;
+            const movietital = data.results[index].known_for[1].title;
+
+            console.log(`Movie Tital: ${movietital} , MovieId : ${movieId}`)
 
             const popularcards = document.createElement("div")
             popularcards.classList.add("card");
@@ -93,12 +98,16 @@ async function homeDisplayImage() {
                 </div>
         
                 <div class="details">
-                <h2 class="title">${titleis == undefined ? "" : titleis}</h2>
+                <h2 class="title">${titleis == undefined ? titleisName : titleis}</h2>
                 <div class="info">
                     <p>Rating: <span class="rating">${rating}</span></p>
                     <p>Votes: <span class="votecount">${votes}</span></p>
                 </div>
-                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
+
+                <div class="button">
+                <button class="WatchNow" id="${movieId}">WatchNow</button>
+                <button class="WatchList" id="${movieId}">WatchList+</button>
+                </div>
                 </div>`;
             personPopularSection.append(popularcards);
 
@@ -111,7 +120,7 @@ async function homeDisplayImage() {
 
 }
 
-// -----------------------------------------
+// ----------------catogerysection-------------------------
 
 
 async function catogerysection() {
@@ -154,7 +163,7 @@ async function catogerysection() {
 
 }
 
-// ---------------------------------------------
+// ------------------updateThePopularByCatogery---------------------------
 
 async function updateThePopularByCatogery(catogeryName) {
 
@@ -214,28 +223,30 @@ submitbtn.addEventListener("click", (e) => {
 
 async function searchitemsfunction(searchvalue) {
 
-    let pageNumber = 1;
+    try {
 
-    const responce = await fetch(`https://api.themoviedb.org/3/search/collection?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${searchvalue}&page=${pageNumber}`);
-    const searchMovie = await responce.json();
+        let pageNumber = 1;
 
-    if (searchMovie.total_results < 1) {
-        searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";
-        searchitems.style.fontSize = "3rem";
-    } else {
+        const responce = await fetch(`https://api.themoviedb.org/3/search/collection?api_key=20f9ed2296f2b4b0100817e7a4262e8f&query=${searchvalue}&page=${pageNumber}`);
+        const searchMovie = await responce.json();
 
-        searchitems.textContent = "";
+        if (searchMovie.total_results < 1) {
+            searchitems.textContent = "Sorry, but we couldn't find any results for your search. Please try a different search!";
+            searchitems.style.fontSize = "3rem";
+        } else {
 
-        for (let index = 0; index < searchMovie.results.length; index++) {
+            searchitems.textContent = "";
 
-            const imagepath = searchMovie.results[index].poster_path;
-            const titleis = searchMovie.results[index].name;
-            const overview = searchMovie.results[index].overview;
+            for (let index = 0; index < searchMovie.results.length; index++) {
 
-            const searchcards = document.createElement("div")
-            searchcards.classList.add("card");
-            searchcards.innerHTML =
-                `<div class="image">
+                const imagepath = searchMovie.results[index].poster_path;
+                const titleis = searchMovie.results[index].name;
+                const overview = searchMovie.results[index].overview;
+
+                const searchcards = document.createElement("div")
+                searchcards.classList.add("card");
+                searchcards.innerHTML =
+                    `<div class="image">
                     <img src="${imagepath == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + imagepath}" alt="poster-image">
     
                         </div>
@@ -247,14 +258,18 @@ async function searchitemsfunction(searchvalue) {
                         </div>
                         </div>`;
 
-            searchitems.append(searchcards);
+                searchitems.append(searchcards);
+            }
+
+
         }
 
+        searchitembox.style.display = "block";
+        searchboxinput.value = "";
 
+    } catch (error) {
+        console.log(error)
     }
-
-    searchitembox.style.display = "block";
-    searchboxinput.value = "";
 
 
 }

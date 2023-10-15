@@ -331,6 +331,31 @@ section {
     font-weight: bold;
 }
 
+.WatchNow {
+    background-color: #635e5e;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    border: none;
+    /* box-shadow: 1px 0px 5px rgb(255, 255, 255); */
+    margin: 2rem 0rem 0rem 0rem;
+    border-radius: 16px;
+}
+
+.WatchNow:hover {
+    background-color: #918d8d;
+    transition: all 0.3s ease;
+}
+
+.titaltext {
+    font-size: 2rem;
+}
+
+.WatchNow a {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
 
 
 /* -------------------searchitembox-------------------------- */

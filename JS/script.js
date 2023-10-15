@@ -72,6 +72,10 @@ async function homeDisplayImage() {
         }
 
 
+        console.log(data.results[index].known_for[0].id)
+        console.log(data.results[index].known_for[0].original_title)
+
+
         // ----------------personPopularSection---------------------
 
         for (let index = 0; index < data.results.length; index++) {
@@ -79,7 +83,7 @@ async function homeDisplayImage() {
             const imagepath = data.results[index].known_for[0].poster_path;
             const rating = data.results[index].known_for[0].vote_average;
             const votes = data.results[index].known_for[0].vote_count;
-            const titleis = data.results[index].known_for[0].title
+            const titleis = data.results[index].known_for[0].original_title;
 
             const popularcards = document.createElement("div")
             popularcards.classList.add("card");
@@ -89,11 +93,12 @@ async function homeDisplayImage() {
                 </div>
         
                 <div class="details">
-                <h2 class="title">${titleis}</h2>
+                <h2 class="title">${titleis == undefined ? "" : titleis}</h2>
                 <div class="info">
                     <p>Rating: <span class="rating">${rating}</span></p>
                     <p>Votes: <span class="votecount">${votes}</span></p>
                 </div>
+                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
                 </div>`;
             personPopularSection.append(popularcards);
 

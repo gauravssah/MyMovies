@@ -155,6 +155,7 @@ async function showTheSearchItems(movieName) {
                         <div class="info">
                             <p class="overview">${overview.slice(0, 131)}...</p>
                         </div>
+                        <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
                         </div>`;
 
                 searchitems.append(searchcards);
@@ -191,14 +192,19 @@ async function nowplaying() {
         for (let index = 0; index < data.results.length; index++) {
 
             const imagepath = data.results[index].backdrop_path;
-            const titlepath = data.results[index].title;
+            const titlepath = data.results[index].original_title;
 
             const item = document.createElement("div");
             item.classList.add("items");
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="image">
 
-            <h2 class="tital">${titlepath == undefined ? "" : titlepath}</h2>`;
+                <div class="tital">
+                <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
+                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
+                </div>`;
+
+
             playingItems.append(item);
         }
     } catch (error) {
@@ -242,6 +248,7 @@ async function topratesmovies() {
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
                 <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
+                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
             </div>`;
 
             popularItems.append(items);
@@ -275,7 +282,10 @@ async function Upcomingfunction() {
             item.classList.add("items");
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
-            <h2 class="tital">${titlepath == undefined ? "" : titlepath}</h2>`;
+                <div class="tital">
+                <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
+                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
+                </div>`;
             Upcoming.append(item);
         }
     } catch (error) {
@@ -317,6 +327,7 @@ async function Discovermovies(pageNo) {
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
                 <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
+                <button class="WatchNow"> <a href="details.html">Watch Now</a></button>
             </div>`;
 
                 DiscoverItems.append(items);

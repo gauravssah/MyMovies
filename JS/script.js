@@ -9,6 +9,12 @@ const searchitembox = document.querySelector(".searchitembox");
 const searchboxinput = document.querySelector(".searchbox input");
 
 
+
+
+
+let watchNowBtnsId;
+
+
 closebtn.addEventListener("click", () => {
     if (!null) {
         searchitembox.remove();
@@ -74,13 +80,14 @@ async function homeDisplayImage() {
 
 
 
-        console.log(data.results)
+        // console.log(data.results)
 
         // ----------------personPopularSection---------------------
 
         for (let index = 0; index < data.results.length; index++) {
 
             const imagepath = data.results[index].known_for[1].poster_path;
+            const imagepath0 = data.results[index].known_for[0].poster_path;
             const rating = data.results[index].known_for[1].vote_average;
             const votes = data.results[index].known_for[1].vote_count;
             const titleis = data.results[index].known_for[1].original_title;
@@ -88,13 +95,13 @@ async function homeDisplayImage() {
             const movieId = data.results[index].known_for[1].id;
             const movietital = data.results[index].known_for[1].title;
 
-            console.log(`Movie Tital: ${movietital} , MovieId : ${movieId}`)
+            // console.log(`Movie Tital: ${movietital} , MovieId : ${movieId}`);
 
             const popularcards = document.createElement("div")
             popularcards.classList.add("card");
             popularcards.innerHTML =
                 `<div class="image">
-                <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="poster-image">
+                <img src="https://image.tmdb.org/t/p/original${imagepath == null ? imagepath0 : imagepath}" alt="poster-image">
                 </div>
         
                 <div class="details">
@@ -111,7 +118,20 @@ async function homeDisplayImage() {
                 </div>`;
             personPopularSection.append(popularcards);
 
+
         }
+
+        const watchNowBtnsgetting = personPopularSection.querySelectorAll(".WatchNow");
+
+        watchNowBtnsgetting.forEach((btns) => {
+            // watchNowBtns.push(btns);
+            btns.addEventListener("click", (e) => {
+                watchNowBtnsId = e.target.id;
+                watchNowgettingId(watchNowBtnsId)
+            })
+
+        })
+
 
 
     } catch (error) {
@@ -119,6 +139,7 @@ async function homeDisplayImage() {
     }
 
 }
+
 
 // ----------------catogerysection-------------------------
 
@@ -273,3 +294,33 @@ async function searchitemsfunction(searchvalue) {
 
 
 }
+
+
+// console.log(watchNowBtns)
+
+// watchNowBtns.forEach((btn) => {
+//     console.log(btn)
+// })
+
+
+// ------------------watchNowgettingId--------------------------------------
+const displaysection = document.querySelector(".displaysection")
+const section = document.querySelectorAll("section")
+
+
+
+function watchNowgettingId(id) {
+
+    displaysection.remove()
+
+    section.forEach((sec) => {
+        sec.remove();
+    })
+
+    let currentMovieId = id;
+    console.log(currentMovieId)
+
+}
+
+
+

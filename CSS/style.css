@@ -438,3 +438,29 @@ section {
     justify-content: center;
 
 }
+
+
+footer {
+    background-color: #3c3c3c;
+    border-top: 1px solid white;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgb(86, 86, 86);
+}
+
+footer a {
+    font-size: 2.5rem;
+    color: white;
+    margin: 2rem 0;
+}
+
+footer .heart {
+    font-size: 4rem;
+    color: rgb(179, 52, 52);
+    margin: 2rem 0;
+}
+
+footer a:hover .heart {
+    color: red;
+}

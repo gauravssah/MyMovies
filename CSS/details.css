@@ -1,0 +1,131 @@
+.container {
+    width: 100%;
+    /* font-size: 3rem; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    color: white;
+    padding: 2rem;
+}
+
+.moviesection {
+    width: 65%;
+    /* border: 2px solid blue; */
+
+}
+
+.movievideo-details {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.movie-video video {
+    width: 100%;
+}
+
+
+.movie-details {
+    /* border: 2px solid red; */
+    margin-top: 2rem;
+}
+
+.aboutMovies {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.aboutMovies h2,
+.original_title {
+    font-size: 3rem;
+}
+
+.overview {
+    font-size: 2rem;
+}
+
+.rating,
+.popularity,
+.rating,
+.release_date {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+.recomendationsection {
+    /* border: 2px solid rgb(0, 255, 255); */
+    width: 30%;
+
+}
+
+.recomendedItems {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.recomendedItems .card {
+    width: 40%;
+    position: relative;
+    border-radius: 10px;
+
+}
+
+.card img {
+    width: 100%;
+    transform: transform 700ms ease;
+}
+
+.moviedetails {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(18, 18, 18, 0.485);
+    color: white;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.card:hover .moviedetails {
+    transform: translateY(0%);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.movietital {
+    font-size: 2rem;
+}
+
+
+.moviedetails p,
+span {
+    font-size: 1rem;
+}
+
+.rating,
+.totalvotes,
+span {
+    font-weight: bold;
+}
+
+.card img:hover {
+    transform: scale(1.2);
+    transform: transform 700ms ease;
+}
+
+.moviedetails .WatchNow {
+    font-size: 1.5rem;
+}

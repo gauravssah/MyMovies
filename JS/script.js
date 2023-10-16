@@ -9,11 +9,7 @@ const searchitembox = document.querySelector(".searchitembox");
 const searchboxinput = document.querySelector(".searchbox input");
 
 
-
-
-
 let watchNowBtnsId;
-
 
 closebtn.addEventListener("click", () => {
     if (!null) {
@@ -124,10 +120,10 @@ async function homeDisplayImage() {
         const watchNowBtnsgetting = personPopularSection.querySelectorAll(".WatchNow");
 
         watchNowBtnsgetting.forEach((btns) => {
-            // watchNowBtns.push(btns);
             btns.addEventListener("click", (e) => {
                 watchNowBtnsId = e.target.id;
-                watchNowgettingId(watchNowBtnsId)
+                localStorage.setItem("MymovieId", watchNowBtnsId);
+                window.location.href = "../details.html";
             })
 
         })
@@ -309,18 +305,18 @@ const section = document.querySelectorAll("section")
 
 
 
-function watchNowgettingId(id) {
+// function watchNowgettingId(id) {
 
-    displaysection.remove()
+//     displaysection.remove()
 
-    section.forEach((sec) => {
-        sec.remove();
-    })
+//     section.forEach((sec) => {
+//         sec.remove();
+//     })
 
-    let currentMovieId = id;
-    console.log(currentMovieId)
+//     let currentMovieId = id;
+//     console.log(currentMovieId)
 
-}
+// }
 
 
 

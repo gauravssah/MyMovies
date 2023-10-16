@@ -1,23 +1,19 @@
-// // ----------------------Toprated--------------------------------
+// // ----------------------RecomendedMovie--------------------------------
 const recomendedItems = document.querySelector(".recomendedItems");
-console.log(recomendedItems);
-topratesmovies();
+RecomendedMovie();
 
-console.log("hello")
+let movieId = localStorage.getItem("MymovieId");
+console.log("movieId : ", movieId)
 
-async function topratesmovies() {
+async function RecomendedMovie() {
 
     try {
 
-        let total = 0;
-        let RandompageNo = Math.floor(Math.random() * 50 + 1);
+        let RandompageNo = Math.floor(Math.random() * 10 + 1);
         const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
 
 
         const data = await responce.json();
-        console.log(data)
-
-
 
         for (let index = 0; index < 6; index++) {
 
@@ -44,10 +40,6 @@ async function topratesmovies() {
         }
 
 
-
-
-
-
     } catch (error) {
         console.log(error)
     }
@@ -55,9 +47,29 @@ async function topratesmovies() {
 }
 
 
+// ------------CurrenMovieForPlay-----------------------
+
+const aboutMovies = document.querySelector(".aboutMovies");
 
 
-// -----------------------------------
+playCurrentMovie()
+async function playCurrentMovie() {
+    const responce = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=20f9ed2296f2b4b0100817e7a4262e8f`);
+    const data = await responce.json();
+    // console.log(data);
+
+    const movieTital = data.original_title;
+    const moveOverview = data.overview;
+    const movierating = data.vote_average;
+    const movieRelaseDate = data.release_date;
+
+    aboutMovies.innerHTML =
+        `    <h2 class="title">Title : <span class="original_title">${movieTital}</span></h2>
+    <p class="overview">${moveOverview}</p>
+    <p class="rating">Rating : <span class="popularity">${movierating.toFixed(1)} %</span></p>
+    <p class="rating">Release Date : <span class="release_date">${movieRelaseDate}</span></p>`;
+
+}
 
 
 

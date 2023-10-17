@@ -351,6 +351,11 @@ section {
     font-weight: bold;
     color: rgb(0, 0, 0);
     white-space: none;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.WatchNow:active {
+    transform: scale(0.9);
 }
 
 .WatchList {
@@ -366,6 +371,10 @@ section {
     color: rgb(255, 255, 255);
     white-space: none;
     border: 1px solid rgb(255, 255, 255);
+}
+
+.WatchList:active {
+    transform: scale(0.9);
 }
 
 .WatchList:hover {

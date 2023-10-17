@@ -190,9 +190,9 @@ async function nowplaying() {
         const data = await responce.json();
 
         for (let index = 0; index < data.results.length; index++) {
-
             const imagepath = data.results[index].backdrop_path;
             const titlepath = data.results[index].original_title;
+            const movieId = data.results[index].id;
 
             const item = document.createElement("div");
             item.classList.add("items");
@@ -201,13 +201,28 @@ async function nowplaying() {
 
             <div class="tital">
             <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
-            <button class="WatchNow">Watch Now</a></button>
+            <button class="WatchNow" id="${movieId}">Watch Now</a></button>
             </div>`;
             playingItems.append(item);
         }
+
+        const playingItemss = playingItems.querySelectorAll(".items");
+        // console.log(playingItemss)
+        playingItemss.forEach((btns) => {
+            btns.addEventListener("click", (e) => {
+                watchNowBtnsId = e.target.id;
+                localStorage.setItem("MymovieId", watchNowBtnsId);
+                window.location.href = "../details.html";
+            });
+        });
+
+
+
     } catch (error) {
         console.log(error)
     }
+
+
 
 }
 
@@ -225,6 +240,7 @@ async function topratesmovies() {
         const responce = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
 
         const data = await responce.json();
+        console.log(data)
 
         for (let index = 0; index < data.results.length; index++) {
             const imagepath = data.results[index].poster_path;
@@ -232,24 +248,38 @@ async function topratesmovies() {
             const description = data.results[index].overview;
             const rating = data.results[index].vote_average;
             const totalvotes = data.results[index].vote_count;
+            const movieId = data.results[index].id;
+            // console.log(movieId)
+
 
             const items = document.createElement("div");
             items.classList.add("items");
-
             items.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
 
-        <div class="moviedetails">
+            <div class="moviedetails">
             <h1 class="movietital">${movietital}</h1>
             <p class="overvies">${description.slice(0, 100)}..</p>
 
             <p class="rating">Rating: <span>${rating} %</span></p>
             <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
-            <button class="WatchNow"> Watch Now</a></button>
-        </div>`;
+            <button class="WatchNow" id="${movieId}"> Watch Now</a></button>
+            </div>`;
 
             popularItems.append(items);
         }
+
+        const popularItemss = popularItems.querySelectorAll(".items");
+
+        // console.log(popularItemss);
+
+        popularItemss.forEach((btns) => {
+            btns.addEventListener("click", (e) => {
+                watchNowBtnsId = e.target.id;
+                localStorage.setItem("MymovieId", watchNowBtnsId);
+                window.location.href = "../details.html";
+            });
+        });
 
     } catch (error) {
         console.log(error)
@@ -269,11 +299,13 @@ async function Upcomingfunction() {
         let RandompageNo = Math.floor(Math.random() * 20 + 1);
         const responce = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=20f9ed2296f2b4b0100817e7a4262e8f&page=${RandompageNo}`);
         const data = await responce.json();
-
+        console.log(data)
         for (let index = 0; index < data.results.length; index++) {
 
             const imagepath = data.results[index].backdrop_path;
             const titlepath = data.results[index].title;
+            const movieId = data.results[index].id;
+
 
             const item = document.createElement("div");
             item.classList.add("items");
@@ -281,10 +313,24 @@ async function Upcomingfunction() {
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
                 <div class="tital">
                 <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
-                <button class="WatchNow">Watch Now</a></button>
+                <button class="WatchNow" id="${movieId}">Watch Now</a></button>
                 </div>`;
             Upcoming.append(item);
         }
+
+        const Upcomings = Upcoming.querySelectorAll(".items");
+
+        // console.log(Upcomings);
+
+        Upcomings.forEach((btns) => {
+            btns.addEventListener("click", (e) => {
+                watchNowBtnsId = e.target.id;
+                localStorage.setItem("MymovieId", watchNowBtnsId);
+                window.location.href = "../details.html";
+            });
+        });
+
+
     } catch (error) {
         console.log(error)
     }
@@ -310,6 +356,7 @@ async function Discovermovies(pageNo) {
                 const description = data.results[index].overview;
                 const rating = data.results[index].vote_average;
                 const totalvotes = data.results[index].vote_count;
+                const movieId = data.results[index].id;
 
                 const items = document.createElement("div");
                 items.classList.add("items");
@@ -317,17 +364,29 @@ async function Discovermovies(pageNo) {
                 items.innerHTML =
                     ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
     
-            <div class="moviedetails">
+                <div class="moviedetails">
                 <h1 class="movietital">${movietital}</h1>
                 <p class="overvies">${description.slice(0, 100)}..</p>
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
                 <p class="totalvotes">Votes: <span>${totalvotes}</span></p>
-                <button class="WatchNow">Watch Now</a></button>
-            </div>`;
+                <button class="WatchNow" id="${movieId}">Watch Now</a></button>
+                </div>`;
 
                 DiscoverItems.append(items);
             }
+
+            const AllIdBtns = DiscoverItems.querySelectorAll(".items");
+
+            // console.log(AllIdBtns);
+
+            AllIdBtns.forEach((btns) => {
+                btns.addEventListener("click", (e) => {
+                    watchNowBtnsId = e.target.id;
+                    localStorage.setItem("MymovieId", watchNowBtnsId);
+                    window.location.href = "../details.html";
+                });
+            });
 
         } else {
             alert("You Reach The Max, Please Reload The Page:")

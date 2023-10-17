@@ -12,10 +12,10 @@ const searchboxinput = document.querySelector(".searchbox input");
 let watchNowBtnsId;
 
 closebtn.addEventListener("click", () => {
-    if (!null) {
-        searchitembox.remove();
-    }
-
+    // if (!null) {
+    //     searchitembox.remove();
+    // }
+    searchitembox.remove();
 })
 
 const navactionlist = document.querySelectorAll(".navactionlist li");
@@ -108,7 +108,7 @@ async function homeDisplayImage() {
                 </div>
 
                 <div class="button">
-                <button class="WatchNow" id="${movieId}">WatchNow</button>
+                <button class="WatchNow" id="${movieId}"> WatchNow</button>
                 <button class="WatchList" id="${movieId}">WatchList+</button>
                 </div>
                 </div>`;
@@ -290,33 +290,6 @@ async function searchitemsfunction(searchvalue) {
 
 
 }
-
-
-// console.log(watchNowBtns)
-
-// watchNowBtns.forEach((btn) => {
-//     console.log(btn)
-// })
-
-
-// ------------------watchNowgettingId--------------------------------------
-const displaysection = document.querySelector(".displaysection")
-const section = document.querySelectorAll("section")
-
-
-
-// function watchNowgettingId(id) {
-
-//     displaysection.remove()
-
-//     section.forEach((sec) => {
-//         sec.remove();
-//     })
-
-//     let currentMovieId = id;
-//     console.log(currentMovieId)
-
-// }
 
 
 

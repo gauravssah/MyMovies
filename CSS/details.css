@@ -19,11 +19,37 @@
     flex-direction: column;
 }
 
+.movie-video {
+    width: 100%;
+    position: relative;
+}
 
 .movie-video video {
     width: 100%;
+    opacity: 0.5;
 }
 
+.videoimage {
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+    z-index: -1;
+}
+
+.videoimage img {
+    width: 100%;
+    /* opacity: 0.3; */
+}
+
+.demovideotext {
+    font-size: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+}
 
 .movie-details {
     /* border: 2px solid red; */

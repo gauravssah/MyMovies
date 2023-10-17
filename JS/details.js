@@ -56,12 +56,19 @@ playCurrentMovie()
 async function playCurrentMovie() {
     const responce = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=20f9ed2296f2b4b0100817e7a4262e8f`);
     const data = await responce.json();
-    // console.log(data);
+
+
+    const videoimage = document.querySelector(".videoimage img");
 
     const movieTital = data.original_title;
     const moveOverview = data.overview;
     const movierating = data.vote_average;
     const movieRelaseDate = data.release_date;
+    const videoscr = data.backdrop_path;
+    const moreDetails = data.homepage;
+    const posterpath = data.poster_path;
+
+    videoimage.src = `https://image.tmdb.org/t/p/original${videoscr}`;
 
     aboutMovies.innerHTML =
         `    <h2 class="title">Title : <span class="original_title">${movieTital}</span></h2>

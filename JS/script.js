@@ -126,7 +126,7 @@ async function homeDisplayImage() {
                 window.location.href = "../details.html";
             })
 
-        })
+        });
 
 
 

@@ -13,6 +13,7 @@
 
     body {
         /* background-color: pink; */
+        width: 769px;
     }
 
     .displaysection {
@@ -100,7 +101,7 @@
 
     body {
         /* background-color: blue; */
-        width: 745px;
+        width: 481px;
     }
 
     .displaysection {
@@ -252,7 +253,7 @@
 
     body {
         /* background-color: rgb(80, 223, 72); */
-        width: 745px;
+        width: 320px;
     }
 
     * {
@@ -408,7 +409,7 @@
 
     body {
         /* background-color: rgb(80, 223, 72); */
-        width: 745px;
+        width: 321px;
     }
 
     * {

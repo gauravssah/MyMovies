@@ -8,6 +8,11 @@
 @media (min-width: 769px) and (max-width: 1024px) {
     * {
         font-size: 50.5%;
+
+    }
+
+    body {
+        /* background-color: pink; */
     }
 
     .displaysection {
@@ -50,6 +55,35 @@
     }
 
 
+    /* ----------MOVIE--------------- */
+
+    .moviesTopSliderDisplay {
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 10px;
+        width: 90%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        min-width: 745px;
+        z-index: 1;
+    }
+
+    .popularItems .items {
+        width: 25%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .DiscoverItems .items {
+        width: 25%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
 }
 
 
@@ -58,6 +92,7 @@
 
 
 /* ##################### 481px to 768px ####################### */
+
 @media (min-width: 481px) and (max-width: 768px) {
     * {
         font-size: 50.5%;
@@ -66,10 +101,6 @@
     body {
         /* background-color: blue; */
         width: 745px;
-    }
-
-    * {
-        font-size: 50.5%;
     }
 
     .displaysection {
@@ -155,6 +186,59 @@
     .searchbox.bottomsrarch form input {
         width: 60%;
     }
+
+    /* ----------MOVIE--------------- */
+
+    .moviesTopSliderDisplay {
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 10px;
+        width: 90%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        min-width: 745px;
+        z-index: 1;
+    }
+
+    .popularItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .DiscoverItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    /* -------Details box---------- */
+
+    .container {
+        width: 100%;
+        /* font-size: 3rem; */
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .moviesection {
+        width: 99%;
+        /* border: 2px solid blue; */
+    }
+
+    .recomendationsection {
+        /* border: 2px solid rgb(0, 255, 255); */
+        width: 100%;
+    }
+
 
 }
 
@@ -258,8 +342,215 @@
     .searchbox.bottomsrarch form input {
         width: 60%;
     }
+
+    /* ----------MOVIE--------------- */
+
+    .moviesTopSliderDisplay {
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 10px;
+        width: 90%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        min-width: 745px;
+        z-index: 1;
+    }
+
+    .popularItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .DiscoverItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    /* -------Details box---------- */
+
+    .container {
+        width: 100%;
+        /* font-size: 3rem; */
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .moviesection {
+        width: 99%;
+        /* border: 2px solid blue; */
+    }
+
+    .recomendationsection {
+        /* border: 2px solid rgb(0, 255, 255); */
+        width: 100%;
+    }
+
+
 }
 
 
 /* ##################### 280px to 321px ####################### */
-@media (max-width: 321px) {}
+@media (max-width: 321px) {
+
+    * {
+        font-size: 40.5%;
+    }
+
+    body {
+        /* background-color: rgb(80, 223, 72); */
+        width: 745px;
+    }
+
+    * {
+        font-size: 50.5%;
+    }
+
+    .displaysection {
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 20px;
+        width: 90%;
+        height: 35vh;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        min-width: 745px;
+        overflow: hidden;
+    }
+
+    .displaysection::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgb(255, 244, 244) 0%, rgba(255, 0, 0, 0) 26%, rgba(189, 189, 189, 0.9473039215686274) 78%);
+        overflow: hidden;
+    }
+
+    .displaysection .textbox {
+        position: absolute;
+        bottom: -66px;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 17rem;
+        gap: 6rem;
+    }
+
+    .card {
+        width: 46%;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .navaction .navactionlist li {
+        list-style: none;
+        text-decoration: none;
+        font-size: 6.5rem;
+        text-transform: uppercase;
+        position: relative;
+        opacity: 0.5;
+    }
+
+    .searchbox {
+        display: none;
+    }
+
+
+    .searchbox.bottomsrarch {
+        display: block;
+        width: 100%;
+        font-size: 60%;
+        text-align: center;
+        padding: 2rem 0rem;
+        background-color: rgba(29, 29, 29, 0.687);
+        z-index: 999;
+        box-shadow: 0px 1px 5px grey;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .searchbox.bottomsrarch form {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .searchbox.bottomsrarch form input {
+        width: 60%;
+    }
+
+
+    /* ----------MOVIE--------------- */
+
+    .moviesTopSliderDisplay {
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 10px;
+        width: 90%;
+        height: 40vh;
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(169, 169, 192, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        min-width: 745px;
+        z-index: 1;
+    }
+
+    .popularItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .DiscoverItems .items {
+        width: 49%;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+
+    /* -------Details box---------- */
+
+    .container {
+        width: 100%;
+        /* font-size: 3rem; */
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        color: white;
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .moviesection {
+        width: 99%;
+        /* border: 2px solid blue; */
+    }
+
+    .recomendationsection {
+        /* border: 2px solid rgb(0, 255, 255); */
+        width: 100%;
+    }
+
+}

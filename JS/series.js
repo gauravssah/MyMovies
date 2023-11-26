@@ -38,8 +38,8 @@ async function updatethemoviesDisplay() {
                 `<img src="${data.results[index].backdrop_path == null ? 'https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg' : "https://image.tmdb.org/t/p/original" + data.results[index].backdrop_path}" alt="image">
 
         <div class="SliderDisplaydetailsbox">
-            <h1>${data.results[index].title == undefined ? "" : data.results[index].title}</h1>
-            <p>${data.results[index].overview.slice(0, 230)}.</p>
+            <h1>${data.results[index].title == undefined ? "Not Avilable" : data.results[index].title.slice(0, 15)}</h1>
+            <p>${data.results[index].overview.slice(0, 150)}.</p>
         </div>`;
 
             moviesTopSliderDisplay.insertBefore(slider, moviesTopSliderDisplay.children[0]);
@@ -151,7 +151,7 @@ async function showTheSearchItems(movieName) {
     
                         </div>
                         <div class="details">
-                        <h2 class="title">${titleis == undefined ? "" : titleis}</h2>
+                        <h2 class="title">${titleis == undefined ? "" : titleis.slice(0, 15)}</h2>
                         <div class="info">
                             <p class="overview">${overview.slice(0, 131)}...</p>
                         </div>
@@ -203,7 +203,7 @@ async function nowplaying() {
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="image">
 
                 <div class="tital">
-                <h2 class="titaltext">${titlepath == undefined ? titalName : titlepath}</h2>
+                <h2 class="titaltext">${titlepath == undefined ? titalName.slice(0, 10) : titlepath.slice(0, 10)}</h2>
                 <button class="WatchNow" id="${movieId}">WatchNow</button>
                 </div>`;
 
@@ -262,7 +262,7 @@ async function topratesmovies() {
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
     
             <div class="moviedetails">
-                <h1 class="movietital">${movietital == undefined ? nametital : movietital}</h1>
+                <h1 class="movietital">${movietital == undefined ? nametital.slice(0, 15) : movietital.slice(0, 15)}</h1>
                 <p class="overvies">${description.slice(0, 100)}..</p>
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
@@ -315,7 +315,7 @@ async function Upcomingfunction() {
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
                 <div class="tital">
-                <h2 class="titaltext">${titlepath == undefined ? nametital : titlepath}</h2>
+                <h2 class="titaltext">${titlepath == undefined ? nametital.slice(0, 10) : titlepath.slice(0, 10)}</h2>
                 <button class="WatchNow" id="${movieId}">WatchNow</button>
                 </div>`;
             Upcoming.append(item);
@@ -369,8 +369,8 @@ async function Discovermovies(pageNo) {
                     ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
     
                 <div class="moviedetails">
-                <h1 class="movietital">${movietital == undefined ? nametital : movietital}</h1>
-                <p class="overvies">${description.slice(0, 100)}..</p>
+                <h1 class="movietital">${movietital == undefined ? nametital.slice(0, 15) : movietital.slice(0, 15)}</h1>
+                <p class="overvies">${description.slice(0, 100)}...</p>
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
                 <p class="totalvotes">Votes: <span>${totalvotes}</span></p>

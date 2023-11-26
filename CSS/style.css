@@ -333,7 +333,7 @@ section {
 
 .button {
     /* background: rebeccapurple; */
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -354,6 +354,12 @@ section {
     border: 1px solid rgb(255, 255, 255);
 }
 
+.WatchNow:hover {
+    background-color: black;
+    color: white;
+    transition: all 0.3s ease;
+}
+
 .WatchNow:active {
     transform: scale(0.9);
 }
@@ -364,7 +370,7 @@ section {
     cursor: pointer;
     border: none;
     /* box-shadow: 1px 0px 5px rgb(255, 255, 255); */
-    margin: 2rem 0rem 0rem 1rem;
+    margin: 2rem 1rem 0rem 1rem;
     border-radius: 16px;
     font-size: 1.8rem;
     font-weight: bold;
@@ -378,12 +384,8 @@ section {
 }
 
 .WatchList:hover {
-    background-color: #000000;
-    transition: all 0.3s ease;
-}
-
-.WatchNow:hover {
-    background-color: #918d8d;
+    background-color: #ffffff;
+    color: #212121;
     transition: all 0.3s ease;
 }
 

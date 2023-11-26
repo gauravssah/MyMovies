@@ -210,7 +210,7 @@ async function updateThePopularByCatogery(catogeryName) {
                     </div>
 
                     <div class="details">
-                    <h2 class="title">${titleis}</h2>
+                    <h2 class="title">${titleis.slice(0, 15)}</h2>
                     <div class="info">
                         <p class="overview">${overview.slice(0, 131)}...</p>
                     </div>
@@ -269,7 +269,7 @@ async function searchitemsfunction(searchvalue) {
                         </div>
     
                         <div class="details">
-                        <h2 class="title">${titleis}</h2>
+                        <h2 class="title">${titleis.slice(0, 15)}</h2>
                         <div class="info">
                             <p class="overview">${overview.slice(0, 131)}...</p>
                         </div>

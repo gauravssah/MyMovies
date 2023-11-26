@@ -152,7 +152,7 @@ async function showTheSearchItems(movieName) {
                         </div>
     
                         <div class="details">
-                        <h2 class="title">${titleis == undefined ? "" : titleis}</h2>
+                        <h2 class="title">${titleis == undefined ? "Not Available" : titleis.slice(0, 15)}</h2>
                         <div class="info">
                             <p class="overview">${overview.slice(0, 131)}...</p>
                         </div>
@@ -200,7 +200,7 @@ async function nowplaying() {
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="image">
 
             <div class="tital">
-            <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
+            <h2 class="titaltext">${titlepath == undefined ? "Not Available" : titlepath.slice(0, 15)}</h2>
             <button class="WatchNow" id="${movieId}">Watch Now</a></button>
             </div>`;
             playingItems.append(item);
@@ -258,7 +258,7 @@ async function topratesmovies() {
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
 
             <div class="moviedetails">
-            <h1 class="movietital">${movietital}</h1>
+            <h1 class="movietital">${movietital.slice(0, 15)}</h1>
             <p class="overvies">${description.slice(0, 100)}..</p>
 
             <p class="rating">Rating: <span>${rating} %</span></p>
@@ -312,7 +312,7 @@ async function Upcomingfunction() {
             item.innerHTML =
                 ` <img src="${imagepath == null ? "https://image.tmdb.org/t/p/original/muTL1oSkmYIzREjBh3LukKpbmo2.jpg" : 'https://image.tmdb.org/t/p/original' + imagepath}" alt="">
                 <div class="tital">
-                <h2 class="titaltext">${titlepath == undefined ? "" : titlepath}</h2>
+                <h2 class="titaltext">${titlepath == undefined ? "Not Available" : titlepath.slice(0, 15)}</h2>
                 <button class="WatchNow" id="${movieId}">Watch Now</a></button>
                 </div>`;
             Upcoming.append(item);
@@ -365,7 +365,7 @@ async function Discovermovies(pageNo) {
                     ` <img src="https://image.tmdb.org/t/p/original${imagepath}" alt="">
     
                 <div class="moviedetails">
-                <h1 class="movietital">${movietital}</h1>
+                <h1 class="movietital">${movietital.slice(0, 15)}</h1>
                 <p class="overvies">${description.slice(0, 100)}..</p>
     
                 <p class="rating">Rating: <span>${rating} %</span></p>
